@@ -1,4 +1,3 @@
-import { divide } from "lodash"
 import Head from "next/head"
 import Link from 'next/link'
 
