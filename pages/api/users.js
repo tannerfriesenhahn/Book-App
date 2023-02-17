@@ -2,7 +2,7 @@
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
 import bcrypt from 'bcrypt'
-const saltRounds = process.env.SALT_ROUNDS
+const saltRounds = 10
 
 export default async function handler (req, res) {
   const { method } = req
