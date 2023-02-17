@@ -34,22 +34,22 @@ export default function Home() {
             <div id="carouselExampleSlidesOnly" className="carousel slide col-lg-4 col-md-8 col-sm-8" data-bs-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL28172760M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL28172760M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               <div className="carousel-item">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL21058613M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL21058613M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               <div className="carousel-item">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL21733390M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL21733390M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               <div className="carousel-item">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL10682512M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL10682512M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               <div className="carousel-item">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL2028412M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL2028412M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               <div className="carousel-item">
-                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL25928337M-M.jpg" class="d-block w-100" alt="..."/>
+                <img height='300px' src="https://covers.openlibrary.org/b/olid/OL25928337M-M.jpg" className="d-block w-100" alt="..."/>
               </div>
               
               

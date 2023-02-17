@@ -57,7 +57,7 @@ function Library(){
         .then(res => res.json())
         .then(async(data)=>{
 
-            //creates an element if there are no books found
+            // creates an element if there are no books found
             if(data.docs.length === 0){
                 if(document.getElementById('NBF')===null){
                     const noBooks = document.createElement('h1')
@@ -67,8 +67,12 @@ function Library(){
                     noBooks.id = 'NBF'
                 }
             }else{
-                document.getElementById('NBF').remove()
+                if(document.getElementById('NBF') != null){
+                    document.getElementById('NBF').remove()
+                }
             }
+
+            console.log(data.docs)
 
             //if the user already has books added in their library, those books will be removed from the rendered books
             var results = []

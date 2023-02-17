@@ -1,6 +1,8 @@
-import { resolve } from 'styled-jsx/css'
+
 import dbConnect from '../../lib/dbConnect'
 import User from '../../models/User'
+import bcrypt from 'bcrypt'
+const saltRounds = process.env.SALT_ROUNDS
 
 export default async function handler (req, res) {
   const { method } = req
@@ -20,23 +22,41 @@ export default async function handler (req, res) {
 
       //when the users is creating an account, the data they entered is sent here to be stored 
       if(req.body.source === 'signup'){
-        try {
-            const user = await new User({
-                name: req.body.name,
-                password: req.body.password
+        try{
+            User.findOne({name: req.body.name}, async function(err, found){
+              if(found){
+                res.send(JSON.stringify({result: 'Username Taken'}))
+              }else{
+
+                bcrypt.genSalt(saltRounds, function(err, salt) {
+                  bcrypt.hash(req.body.password, salt, async function(err, hash) {
+                    const user = await new User({
+                      name: req.body.name,
+                      password: hash
+                    })
+                    await user.save();
+                    res.send(JSON.stringify({result: 'Account Created'}))
+                    // res.status(201).json({ success: true, data: user })
+                  });
+                });
+              }
             })
-            await user.save();
-            res.status(201).json({ success: true, data: user })
           } catch (error) {
             res.status(400).json({ success: false })
           }
       }
       //when the user is trying to login in, the login info is sent here to find a match
       else if(req.body.source === 'login'){
-        User.findOne({name: req.body.name, password: req.body.password}, function(err, found){
+        User.findOne({name: req.body.name}, function(err, found){
             if (found){
-                res.send(JSON.stringify({result: 'found'}));
-            }else{res.send(JSON.stringify({result: 'none found'}))}
+              bcrypt.compare(req.body.password, found.password, function(err, result) {
+                if(result === true){
+                  res.send(JSON.stringify({result: 'found'}));
+                }else{
+                  res.send(JSON.stringify({result: 'wrong password'}))
+                }
+              });
+            }else{res.send(JSON.stringify({result: 'wrong username and maybe password'}))}
         })
       }
       //adds posted book data to the current users library array, if the same book is already added, it will not add another

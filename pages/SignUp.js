@@ -23,9 +23,11 @@ function SignUp(){
         fetch(url, options)
         .then((response) => response.json())
         .then((data) => {console.log(data)
-            if (data.success === true){
+            if (data.result === 'Account Created'){
                 window.sessionStorage.setItem('name', username);
                 window.location.href = '/Library'
+            }else{
+                alert('Username Taken')
             }
         });
     }
