@@ -1,4 +1,3 @@
-require('dotenv').config()
 import React, { useState, useEffect } from 'react'
 import getSessionStorage from '../Components/getSessionStorage'
 import updateBooks from '../Components/updateBooks'

@@ -1,4 +1,3 @@
-require('dotenv').config()
 import React, { useState, useEffect } from 'react'
 import Book from '../Components/Book.jsx'
 import Link from 'next/link'
