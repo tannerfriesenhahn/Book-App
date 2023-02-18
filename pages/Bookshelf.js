@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useState, useEffect } from 'react'
 import getSessionStorage from '../Components/getSessionStorage'
 import updateBooks from '../Components/updateBooks'
@@ -10,7 +11,7 @@ function Bookshelf(props){
     const [bookArr, setBookArr] = useState([])
     const name = getSessionStorage('name')
 
-    const url = 'http://localhost:3000/api/users'
+    const url = process.env.API_URL
     const options = {
         method: 'POST',
         headers: {
@@ -54,7 +55,7 @@ function Bookshelf(props){
             source: 'removeBook',
             name: name
         }
-        const url = 'http://localhost:3000/api/users'
+        const url = process.env.API_URL
         const options = {
             method: 'POST',
             headers: {

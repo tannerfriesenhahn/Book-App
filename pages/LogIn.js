@@ -1,3 +1,4 @@
+require('dotenv').config()
 import Head from "next/head"
 import Link from 'next/link'
 import Layout from '/Components/layout.js'
@@ -8,7 +9,7 @@ function LogIn(){
     function handleLogIn(){
         const username = document.getElementById('name').value
         const password = document.getElementById('password').value
-        const url = 'http://localhost:3000/api/users'
+        const url = process.env.API_URL
         const options = {
             method: 'POST',
             headers: {

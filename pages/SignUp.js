@@ -1,3 +1,4 @@
+require('dotenv').config()
 import Head from "next/head"
 import Link from 'next/link'
 
@@ -8,7 +9,7 @@ function SignUp(){
     async function handleSignUp(){
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-        const url = 'http://localhost:3000/api/users'
+        const url = process.env.API_URL
         const options = {
             method: 'POST',
             headers: {

@@ -1,9 +1,10 @@
+require('dotenv').config()
 
 import React, { useState, useEffect } from "react";
 
     function getBooks(name){
         const [theInfo, setTheInfo] = useState([])
-        const url = 'http://localhost:3000/api/users'
+        const url = process.env.API_URL
         const options = {
             method: 'POST',
             headers: {

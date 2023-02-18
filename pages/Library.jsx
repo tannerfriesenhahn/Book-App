@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React, { useState, useEffect } from 'react'
 import Book from '../Components/Book.jsx'
 import Link from 'next/link'
@@ -36,7 +37,7 @@ function Library(){
         //creates an array that will contain the users already added books
         var alreadyAdded = []
 
-        await fetch('http://localhost:3000/api/users', {
+        await fetch(process.env.API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -118,7 +119,7 @@ function Library(){
             source: 'addBook',
             name: name
         }
-        const url = 'http://localhost:3000/api/users'
+        const url = process.env.API_URL
         const options = {
             method: 'POST',
             headers: {
