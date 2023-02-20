@@ -97,7 +97,7 @@ export default async function handler (req, res) {
               res.send(JSON.stringify({new: 'no books'}))
             }
           })
-          res.send(JSON.stringify({result: acc.library.indexOf({title: req.body.title})}))
+          // res.send(JSON.stringify({result: acc.library.indexOf({title: req.body.title})}))
         })
       }
       //gets the users entire library
