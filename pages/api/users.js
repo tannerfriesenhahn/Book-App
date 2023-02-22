@@ -63,14 +63,14 @@ export default async function handler (req, res) {
       else if(req.body.source === 'addBook'){
         const book = {
           title: req.body.title,
-          desc: req.body.desc,
+          author: req.body.author,
+          bookID: req.body.bookID,
           img: req.body.img,
-          genre: req.body.genre
         }
         User.findOne({name: req.body.name}, (err, acc)=>{
           var iter = 0
           acc.library.map(function(item){
-            if(item.title === book.title){
+            if(item.bookID === book.bookID){
               res.send(JSON.stringify({result: 'In Collection'}))
             }else{
               iter++
@@ -88,7 +88,7 @@ export default async function handler (req, res) {
         User.findOne({name: req.body.name}, function(err, acc){
           acc.library.map((item, index)=>{
             if(acc.library.length > 0){
-              if(item.title === req.body.title){
+              if(item.bookID === req.body.bookID){
                 acc.library.splice(index, 1);
                 acc.save();
                 res.send(JSON.stringify({new: acc.library}))

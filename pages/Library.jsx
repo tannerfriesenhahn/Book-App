@@ -86,7 +86,7 @@ function Library(){
             //goes through the filtered book array and creates an object with the needed data to be rendered 
             foundBooks.forEach((book, index)=>{
                 if(book.cover_edition_key){
-                    if(index < 20){
+                    
                     var displayBook = {
                         title: book.title,
                         author: book.author_name,
@@ -95,7 +95,7 @@ function Library(){
                     }
                     results.push(displayBook)
                 }}
-            })
+            )
             
             //resets search query values
             document.getElementById('title').value = ''
@@ -115,6 +115,7 @@ function Library(){
             img: bookInfo.img,
             title: bookInfo.name,
             author: bookInfo.author,
+            bookID: bookInfo.bookID,
             source: 'addBook',
             name: name
         }
@@ -130,13 +131,14 @@ function Library(){
         await fetch(url, options)
         .then((response) => response.json())
         .then((data)=>{
-
+            console.log(data)
             //when a book is added, an element is created and added to the 'addedBooks' array so the user can remember what book they added
             if(data.result === 'Added Book'){
-                document.getElementById(bookInfo.name).innerHTML = 'Added Book'
+                document.getElementById(bookInfo.bookID).innerHTML = 'Added Book'
                  const tempBook = {
-                     img: bookInfo.img,
-                    title: bookInfo.name
+                    img: bookInfo.img,
+                    title: bookInfo.name,
+                    bookID: bookInfo.bookID
                 }
                 setAddedBooks((prevValue)=>{
                     return [...prevValue, tempBook]
@@ -168,6 +170,7 @@ function Library(){
                                 img={!book.img ? 'https://i.stack.imgur.com/D2VB2.png' : book.img}
                                 name={book.title}
                                 author={book.author}
+                                bookID={book.key}
                                 type={{
                                     func: addBook,
                                     text: 'Add Book'

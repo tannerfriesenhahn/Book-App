@@ -7,7 +7,8 @@ function Book(props){
     const bookInfo = {
         img: props.img,
         name: props.name,
-        author: props.author
+        author: props.author,
+        bookID: props.bookID
     }
 
     return(
@@ -17,7 +18,7 @@ function Book(props){
         <p>{props.author}</p>
         <p>{props.desc}</p>
         <p> {!props.cat ? '' : "Genre: " + props.cat}</p>
-    <button id={props.name} className='btn btn-secondary' onClick={ ()=>{ return props.type.func(bookInfo)}}>{props.type.text}</button>
+    <button id={props.bookID} className='btn btn-secondary' onClick={ ()=>{ return props.type.func(bookInfo)}}>{props.type.text}</button>
     </div>
     )
 }

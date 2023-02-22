@@ -49,8 +49,10 @@ function Bookshelf(props){
 
     // sends post req to database to remove a certain book from the users bookShelf
     function removeBook(bookInfo){
+        //add the book id property to this object then in the api remove book based off id instead of title
         const bookObj ={
             title: bookInfo.name,
+            bookID: bookInfo.bookID,
             source: 'removeBook',
             name: name
         }
@@ -82,6 +84,7 @@ function Bookshelf(props){
             <div className='col-lg-8'>
                 <div id='shelf' className='row'>
                     {bookArr.map(function(book, index){
+                        console.log(book.bookID)
                         {
                         
                             return (
@@ -89,8 +92,7 @@ function Bookshelf(props){
                                     <Book
                                         key={index}
                                         name={book.title}
-                                        desc={book.desc}
-                                        cat={book.genre}
+                                        bookID={book.bookID}
                                         img={book.img}
                                         type={
                                             {
